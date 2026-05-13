@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Car Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container Overlay">
+        <!-- <div class="Overlay"> -->
+            <div class="main-game-area">
+                <div class="side1">
+                    
+                </div>
+                <div class="middle-Area">
+                    <div class="border-lines">
+                        <div class="lines line1"></div>
+                        <div class="lines line2"></div>
+                        <div class="lines line3"></div>
+                        <div class="lines line4"></div>
+                    </div>
+                    <div class="border-lines">
+                        <div class="lines line1"></div>
+                        <div class="lines line2"></div>
+                        <div class="lines line3"></div>
+                        <div class="lines line4"></div>
+                    </div>
+                    <div class="border-lines">
+                        <div class="lines line1"></div>
+                        <div class="lines line2"></div>
+                        <div class="lines line3"></div>
+                        <div class="lines line4"></div>
+                    </div>
+                    <div class="border-lines">
+                        <div class="lines line1"></div>
+                        <div class="lines line2"></div>
+                        <div class="lines line3"></div>
+                        <div class="lines line4"></div>
+                    </div>
+
+                    <i class="coin fa-brands fa-bitcoin fa-flip" style="color: #FFD43B;"></i>
+                    <img class="vehicle aqua" src="./Cars/Aqua Car.png">
+                    <img class="vehicle blue" src="./Cars/Blue Car.png">
+                    <img class="vehicle purple" src="./Cars/Purple Car.png">
+                    <img class="vehicle red" src="./Cars/Red Car.png">
+                    <img class="vehicle yellow" src="./Cars/Yello car.png">
+                    <img class="vehicle formula" src="./Cars/Formula car.png">
+                    
+                    <img class="car" src="./car.png" alt="Not Found">
+                    
+                    <div class="pop-up" style="display: none;">
+                        <h1>Game Over</h1>
+                        <h2 class="game-over-score"></h2>
+                        <button class="play-again">Play Again</button>
+                    </div>
+            </div>
+            <div class="side2">
+                
+            </div>
+        </div>
+        
+        <!-- Panel Area Of Game -->
+        
+        <div class="setting-panel">
+            <h1>Flying Score Board</h1>
+            <img src="./Flag.png">
+            <div class="setting">
+                <i class="volume fa-solid fa-volume-high"></i>
+                <input type="range" id="volume-range">
+                <!-- <i class="fa-solid fa-volume-xmark"></i> -->
+            </div>
+            <div class="jump-board">
+                <h2>Fly :</h2>
+                <div class="jump-box">
+                    1
+                </div>
+            </div>
+            <div class="scoreboard">
+                <h2>Score :</h2>
+                <div class="score-box">
+                    0
+                </div>
+            </div>
+            
+            <div class="LevelBoard">
+                <h2>Level :</h2>
+                <div class="level-box">
+                    0
+                </div>
+            </div>
+        </div>
+    <!-- </div> -->
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

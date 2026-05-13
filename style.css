@@ -1,0 +1,373 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+:root{
+    /* Main Car Postion Variables */
+    --x : 30px;
+    --y : 0px;
+    --z : 0px;
+
+    /* Position of enemy Cars based on color At Starting Game */
+    --aquacarY : 30px;
+    --bluecarY : 30px;
+    --formulaY : 30px;
+    --redcarY : 30px;
+    --yellowcarY : 30px;
+    --purplecarY : 30px;
+
+    /* Coin X and Y Positions */
+    --coinPositionX : 30px;
+    --coinPositionY : 0px;
+
+    /* Road Lines Move */
+    --roadLine1 : 0px;
+    --roadLine2 : 0px;
+    --roadLine3 : 0px;
+    --roadLine4 : 0px;
+
+
+    /* Position at X-Axis of Enemy Car */
+    --aquaX : 30px;
+    --blueX : 140px;
+    --purpleX : 280px;
+    --redcarX : 390px;
+    --yellowX : 510px;
+    --formulaX : 30px;
+}
+
+
+
+body{
+    position: relative;
+}
+
+.container{
+    height: 99vh;
+    width: 100%;
+    background-color: blanchedalmond;
+    display: flex;
+    
+}
+
+.Overlay{
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background: rgba(18, 18, 18, 0.4);
+}
+
+
+
+.main-game-area{
+    min-height: 100vh;
+    width: 80%;
+    background-color: aqua;
+    display: flex;
+}
+
+
+
+.side1{
+    height: 100vh;
+    width: 18%;
+    background-color: #A1C181;
+    border-right: 3px solid black;
+}
+
+.middle-Area{
+    height: 100vh;
+    width: 70%;
+    background-color: grey;
+    /* display: grid; */
+    overflow: hidden;
+    display: flex;
+    perspective: 800px;
+    position: relative;
+    /* visibility: hidden; */
+}
+
+.middle-Area .road{
+    height: 693px;
+    width: 152px;
+    object-fit: cover;
+    border-right: 2px solid white;
+    /* position: relative; */
+}
+
+.lines{
+    height: 6rem;
+    width: 1rem;
+    border-radius: 2px;
+    background-color: yellow;
+    color: green;
+    /* transform: translateY(var(--roadLine1));
+    transition: transform 4s linear; */
+    /* position: absolute; */
+    /* top : 50%; */
+}
+
+.line1{
+    transform: translateY(var(--roadLine1));
+    transition: transform 0.2s linear;
+}
+
+.line2{
+    transform: translateY(var(--roadLine2));
+    transition: transform 0.2s linear;
+}
+
+.line3{
+    transform: translateY(var(--roadLine3));
+    transition: transform 0.2s linear;
+}
+
+.line4{
+    transform: translateY(var(--roadLine4));
+    transition: transform 0.2s linear;
+}
+
+
+
+
+.border-lines{
+    height: 760px;
+    width: 152px;
+    border-right: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.car{
+    height: 5.9rem;
+    width: 3.3rem;
+    position: absolute;
+    object-fit: cover;
+    bottom: 0px;
+    transform-style: preserve-3d;
+    transform-origin: center;
+    transform: translate3d(var(--x), var(--y), var(--z));
+    transition: transform 0.4s linear;
+}
+
+
+/*  Vehicle Style Area */
+
+.vehicle{
+    position: absolute;
+    object-fit: cover;
+    /* transform: translate(var(--aquacar) , "0px");
+    transition: transform 0.3s ease; */
+}
+
+
+.aqua{
+    height: 7rem;
+    width: 3.35rem;
+    transform: translate(var(--aquaX), var(--aquacarY));
+    transition: transform 0.3s linear;
+}
+
+
+.blue{
+    height: 6.1rem;
+    width: 4.8rem;
+    transform: translate(var(--blueX), var(--bluecarY));
+    transition: transform 0.3s linear;
+}
+
+.formula{
+    height: 6.4rem;
+    width: 3.7rem;
+    transform: translate(var(--formulaX), var(--formulaY));
+    transition: transform 0.3s linear;
+}
+
+.red{
+    height: 6.4rem;
+    width: 3.7rem;
+    transform: translate(var(--redcarX), var(--redcarY));
+    transition: transform 0.3s linear;
+}
+
+.yellow{
+    height: 8.1rem;
+    width: 3.5rem;
+    transform: translate(var(--yellowX), var(--yellowcarY));
+    transition: transform 0.3s linear;
+}
+
+.purple{
+    height: 8.1rem;
+    width: 3.5rem;
+    transform: translate(var(--purpleX), var(--purplecarY));
+    transition: transform 0.3s linear;
+}
+
+
+.hid-cars{
+    display: none;
+}
+
+.hid-roadlines{
+    visibility: hidden;
+}
+
+
+
+
+
+
+.coin{
+    position: absolute;
+    font-size: 2.5rem;
+    left: var(--coinPositionX);
+    top: var(--coinPositionY);
+    transition: top 0.3s linear;
+    /* transform: translateY(var(--coinPositionY)); */
+}
+
+
+.pop-up{
+    padding: 15px;
+    position: absolute;
+    background-color: #D7FFF1;
+    height: 18rem;
+    width: 13rem;
+    border-radius: 9px;
+    border: none;
+    margin: auto;
+    inset: 0;
+    box-shadow: 0px 2px 2px grey;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.play-again{
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background-color: #cefaa2;
+    box-shadow: 0px 2px 1px grey;
+}
+
+.play-again:hover{
+    background-color: #b7ff6f;
+    box-shadow: 0px 3px 3px grey;
+    cursor: pointer;
+}
+
+
+.side2{
+    height: 100vh;
+    width: 18.5%;
+    border-left: 3px solid black;
+    background-color: #A1C181;
+}
+
+
+
+
+
+
+
+
+/* Panel Area of the Game */
+
+.setting-panel{
+    min-height: 100vh;
+    width: 30%;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: black;
+    color: white;    
+}
+
+.setting-panel img{
+    height: 50%;
+    width: 100%;
+    object-fit: cover;
+    /* border-radius: 50%; */
+}
+
+.setting{
+    height: 2rem;
+    width: 60%;
+    border: 1px solid lightgray;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+#volume-range{
+    cursor: pointer;
+    height: 3px;
+    width: 100px;
+    font-size: 10px;
+}
+
+
+.scoreboard{
+    height: 5rem;
+    width: 18rem;
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.score-box{
+    height: 1rem;
+    width: 60%;
+    border: 2px solid yellow;
+    border-radius: 5px;
+    padding: 7px;
+}
+
+.jump-board{
+    height: 5rem;
+    width: 18rem;
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.jump-box{
+    height: 1rem;
+    width: 60%;
+    border: 2px solid yellow;
+    border-radius: 5px;
+    padding: 7px;
+}
+
+.LevelBoard{
+     height: 5rem;
+    width: 18rem;
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.level-box{
+    height: 1rem;
+    width: 60%;
+    border: 2px solid rgb(154, 255, 154);
+    border-radius: 5px;
+    padding: 7px;
+}
