@@ -1,3 +1,4 @@
+// Select Game Components in JS
 const jumpsBoard = document.querySelector('.jump-box');
 const scoreboard = document.querySelector('.score-box');
 const levelUpBoard = document.querySelector('.level-box');
@@ -6,9 +7,10 @@ const coin = document.querySelector(".coin");
 const mainGameArea = document.querySelector(".middle-Area");
 const RestartGameBtn = document.querySelector('.play-again');
 const changeVolume = document.querySelector('#volume-range')
+const timeCount = document.querySelector('.time-from-start');
 
 
-// Road Line Movements through JS.
+// Select Road Line Movements through JS.
 const roadLines = document.querySelectorAll('.lines');
 const line1 = document.querySelectorAll('.line1');
 const line2 = document.querySelectorAll('.line2');
@@ -43,6 +45,7 @@ const positionArrayOfCoin = [30, 170, 290, 410, 520];
 
 // Variables for Games
 let x = 0, y = 0, z = 0;
+
 // let speedAccelerator = 2;
 let speed = 100;
 let userScore = 0;
@@ -54,9 +57,11 @@ let formulaCarLaneIndex = 0;
 let stopAnimationFrameOnCollision = true;
 // Detect Collision.
 let animatedId;
+let incrementTimeOnCall = 1;
 
 
-// Position at Y-axis By Varaibles. 
+
+// Position at Y-axis By Variables. 
 let aquafirst = -290;
 let secondBlue = -545;
 let thirdPurple = -220;
@@ -79,7 +84,9 @@ let roadLine4 = 0;
 document.addEventListener('keydown', driveMainCar);
 // Main Car Move Logic
 function driveMainCar(event) {
+    // Start Music on Arrow Key
     GameStartMusic.play();
+    
     if (event.key === 'ArrowUp') {
         if (y >= 450) {
             y = 450;
@@ -153,7 +160,7 @@ function jumpOnClick(event) {       // Trigger On Space
 
 
 
-// Move the vehicles on  
+// Move the vehicles on function Call
 function moveVehicles() {
     aquafirst += 10;
     secondBlue += 10;
@@ -170,8 +177,11 @@ function moveVehicles() {
     yellow.style.setProperty('--yellowcarY', `${yellowTaxi}px`);
     coin.style.setProperty('--coinPositionY', `${moveCoinY}px`);
 
+
     reverseCarsAtBoundary();
     gainScoresByCoins();
+    // Calculate the time of start Game function.
+    gameStartAtTime();
 }
 
 
@@ -206,8 +216,7 @@ function reverseCarsAtBoundary() {
         yellow.classList.add("hid-cars");
         setTimeout(() => yellow.classList.remove("hid-cars"), 500);
     }
-
-
+    // Move coin in line 
     if (moveCoinY >= 700) {
         moveCoinY = -300;
         coin.classList.add("hid-cars");
@@ -253,6 +262,7 @@ function tasksAtGameOver() {
     clearInterval(moveVehiclesInterval);    // Clear Car Movements
     clearInterval(formulaCarInterval);
     clearInterval(moveLinesInterval);
+    // 
     document.querySelector(".game-over-score").innerText = `Score is = ${userScore}`; //Show Score when GameOver
     document.removeEventListener('keydown', driveMainCar);
     document.removeEventListener('keyup', jumpOnClick);     // Remove Jump or fly
@@ -264,10 +274,7 @@ function tasksAtGameOver() {
 }
 
 
-
-
-
-
+// Count Scores and detect Collisions
 function gainScoresByCoins() {
     const goldCoin = coin.getBoundingClientRect();
     const Mycar = car.getBoundingClientRect();
@@ -299,7 +306,6 @@ function gainScoresByCoins() {
 }
 
 
-
 // if score 5 Level Up, Speed Accelerate, Increase Jumps 
 function LevelUpFunctionOnScore() {
     if (userScore >= levelUpOnEachStep) {
@@ -311,6 +317,7 @@ function LevelUpFunctionOnScore() {
         levelUpOnEachStep += 5;
     }
 }
+
 
 function formulaCarfunction() {
     formulaSpeed += 20;
@@ -437,3 +444,47 @@ moveLinesInterval = setInterval(movingRoad, 130);
 changeVolume.addEventListener('change', (e) => {
     GameStartMusic.volume = (changeVolume.value / 100).toFixed(1);
 });
+
+
+
+// Count Time On Start Game. Woking
+const gameStartAtTime = () => {
+    if (incrementTimeOnCall === 10) {
+        incrementTimeOnCall = 1
+        let startTime = Date.now();
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+
+        const secs = elapsed % 60;
+        const mins = Math.floor(elapsed / 60) % 60;
+        const hours = Math.floor(elapsed / 3600);
+
+        console.log(`${hours}h:${mins}m:${secs}s`);
+    }
+
+}
+
+
+
+/** what I Thought about code
+let time = Date.now();
+let minus = 0;
+let hour = 0; 
+
+function TimeIncrementInSeconds() {
+ let currTime = Date.now();
+
+ let secs = ((currTime / 1000) - (time /1000)).toFixed(0)
+    
+    if (secs > 59) {
+        time = Date.now();
+        minus += 1;
+    }
+    if (minus > 59) {
+        time = Date.now();
+        minus = 0;
+        hour += 1;
+    }
+    console.log(`${hour}h:${minus}m:${secs}s`);
+}
+    setInterval(TimeIncrementInSeconds, 1000); 
+ */
