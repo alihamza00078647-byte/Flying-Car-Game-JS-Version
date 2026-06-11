@@ -371,3 +371,7 @@ body{
     border-radius: 5px;
     padding: 7px;
 }
+
+.time-from-start{
+    color: rgb(255, 75, 75);
+}

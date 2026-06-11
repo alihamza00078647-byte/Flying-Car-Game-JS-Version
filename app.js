@@ -44,6 +44,7 @@ const positionArrayOfCoin = [30, 170, 290, 410, 520];
 
 
 // Variables for Games
+// Car's x, y, z axis.
 let x = 0, y = 0, z = 0;
 
 // let speedAccelerator = 2;
@@ -55,9 +56,11 @@ let levelUpOnEachStep = 5;
 let levelStage = 1;
 let formulaCarLaneIndex = 0;
 let stopAnimationFrameOnCollision = true;
+// Initial Time Start variable and increment time variable
+let startTime = Date.now();
+let incrementTimeOnEachfuncCall = 1;
 // Detect Collision.
 let animatedId;
-let incrementTimeOnCall = 1;
 
 
 
@@ -123,12 +126,12 @@ function driveMainCar(event) {
 
 
 
-
+// y-axis limit on Jump 
 function AxisLimitAtJump() {
     // forward limit
     if (y >= 450) {
         y = 450;
-        return;
+        return
     }
 }
 
@@ -447,44 +450,19 @@ changeVolume.addEventListener('change', (e) => {
 
 
 
-// Count Time On Start Game. Woking
+
+// Count Time On Start Game.
 const gameStartAtTime = () => {
-    if (incrementTimeOnCall === 10) {
-        incrementTimeOnCall = 1
-        let startTime = Date.now();
+    incrementTimeOnEachfuncCall++;
+    // console.log("function calls", incrementTimeOnEachfuncCall)
+    if (incrementTimeOnEachfuncCall === 10) {
+        incrementTimeOnEachfuncCall = 1
         const elapsed = Math.floor((Date.now() - startTime) / 1000);
 
         const secs = elapsed % 60;
         const mins = Math.floor(elapsed / 60) % 60;
         const hours = Math.floor(elapsed / 3600);
 
-        console.log(`${hours}h:${mins}m:${secs}s`);
+        timeCount.innerText = `${hours}h:${mins}m:${secs}s`;
     }
-
 }
-
-
-
-/** what I Thought about code
-let time = Date.now();
-let minus = 0;
-let hour = 0; 
-
-function TimeIncrementInSeconds() {
- let currTime = Date.now();
-
- let secs = ((currTime / 1000) - (time /1000)).toFixed(0)
-    
-    if (secs > 59) {
-        time = Date.now();
-        minus += 1;
-    }
-    if (minus > 59) {
-        time = Date.now();
-        minus = 0;
-        hour += 1;
-    }
-    console.log(`${hour}h:${minus}m:${secs}s`);
-}
-    setInterval(TimeIncrementInSeconds, 1000); 
- */
