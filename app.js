@@ -172,7 +172,7 @@ function moveVehicles() {
     yellowTaxi += 10;
     moveCoinY += 10;
 
-
+    
     aqua.style.setProperty('--aquacarY', `${aquafirst}px`);
     blue.style.setProperty('--bluecarY', `${secondBlue}px`);
     purple.style.setProperty('--purplecarY', `${thirdPurple}px`);
